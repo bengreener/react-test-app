@@ -17,6 +17,9 @@ function App() {
         <p>
           Class getter text: {sc.text}
         </p>
+        <p>
+          Class function text: {sc.getText()}
+        </p>
       </header>
     </div>
   );

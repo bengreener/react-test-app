@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-// import MockedClient from './model/client';
 
-jest.mock('./model/client');
-// jest.mock('./model/client', () => {
+jest.mock('./model/server');
+// jest.mock('./model/server', () => {
 //   return {
 //     getData: function () {return 'Mock World'}
 //   };

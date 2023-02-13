@@ -1,10 +1,9 @@
-// import logo from './logo.svg';
 import './App.css';
-import client from '../src/model/client';
+import server from '../src/model/server';
 
 function App() {
 
-  const text = client.getData();
+  const text = server.getData();
 
   return (
     <div id="app" className="App">

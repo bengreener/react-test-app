@@ -1,15 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import server from './model/server';
-// import ServerClass from './model/server-class';
-import ServerClass, { mockText, mockGetText } from './model/server-class';
+// import server from './model/server';
+import ServerClass, { mockGetText } from './model/server-class';
 
-// mock module
-// use mock in __mocks__
+// mock module using mock in __mocks__
 jest.mock('./model/server');
 
-// mock class
-// use mock in __mocks__
+// mock class using mock in __mocks__
 jest.mock('./model/server-class');
 
 // clear data from mocks before each test
@@ -24,26 +21,25 @@ it('renders', () => {
   expect(appDivElement).toBeInTheDocument();
 });
 
-it('displays text from module server', () => {
+it('displays text from server module', () => {
   render(<App />);
-  const pElement = screen.getByText(/Module text/i);
+  const pElement = screen.getByText(/__mocks__ server getText()/);
   expect(pElement).toBeInTheDocument();
 });
 
-it('displays text from server class', () => {
+it('displays text property from ServerClass', () => {
   render(<App />);
-  const pElement = screen.getByText(/Get mock server class text/i);
+  const pElement = screen.getByText(/__mocks__ ServerClass.text/);
   expect(pElement).toBeInTheDocument();
 })
 
-it('displays operation text from server class', () => {
+it('displays ServerClass.getText() method return value', () => {
   render(<App />);
-  const pElement = screen.getByText(/Mock server class operation text/i);
+  const pElement = screen.getByText(/__mocks__ ServerClass.getText()/);
   expect(pElement).toBeInTheDocument();
 })
 
-it('calls mocked operation', () => {
+it('calls mocked method', () => {
   render(<App />);
   expect(mockGetText).toBeCalled();
-  expect(mockGetText.mock.results[0].value).toBe('Mock server class operation text');
 })

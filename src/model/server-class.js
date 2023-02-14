@@ -1,10 +1,10 @@
 class ServerClass {
     get text() {
-        return `It's a server client world :-D`;
+        return `It's a classy world :-D`;
     }
     
     getText() {
-        return 'Class functional text ;-)';
+        return `It's a methodical world ;-)`;
     }
 }
 

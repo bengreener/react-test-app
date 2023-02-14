@@ -1,9 +1,10 @@
-const server = jest.createMockFromModule('../server.js');
+// const server = jest.createMockFromModule('../server.js');
+const server = {};
 
-function getData() {
-    return 'Module text';
+function getText() {
+    return '__mocks__ server getText()';
 };
 
-server.getData = getData;
+server.getText = getText;
 
 module.exports = server;

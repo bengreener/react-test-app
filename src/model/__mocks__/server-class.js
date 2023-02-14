@@ -1,10 +1,12 @@
-// mock using a mock functions
-// export const mockGetText = jest.fn().mockImplementation(() => `It's a functional mock server client world`);
-export const mockGetText = jest.fn(() => `It's a functional mock server client world`); 
+// mock using a mock functions);
+// export const mockGetText = jest.fn(() => `Mock server class operation text`);
+export const mockGetText = jest.fn().mockImplementation(() => `Mock server class operation text`);
 
+// mock with jest.fn()
+// can use mock functions to spy on operation calls
 const serverClass = jest.fn().mockImplementation(() => {
     return {
-        'text': `It's a mock server client world`,
+        'text': `Get mock server class text`,
         getText: mockGetText
     }
 })
@@ -12,16 +14,14 @@ const serverClass = jest.fn().mockImplementation(() => {
 export default serverClass
 
 // mock by reimplementing class
+// can't use mock functions to spy on calls
 // class ServerClass {
 //     get text() {
-//         return `It's a mock server client world`;
+//         return `Get mock server class text`;
 //     }
     
-//     // getText() {
-//     //     return `It's a functional mock server client world`;
-//     // }
 //     getText() {
-//         return `It's a functional mock server client world`;
+//         return `Mock server class operation text`;
 //     }
 // }
 

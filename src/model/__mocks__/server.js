@@ -1,7 +1,7 @@
 const server = jest.createMockFromModule('../server.js');
 
 function getData() {
-    return 'Test World';
+    return 'Module text';
 };
 
 server.getData = getData;

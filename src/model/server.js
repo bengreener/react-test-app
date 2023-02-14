@@ -1,9 +1,9 @@
 const server = {};
 
-function getData() {
-    return 'Hello World :-)';
+function getText() {
+    return `It's a modular World :-)`;
 };
 
-server.getData = getData;
+server.getText = getText;
 
 module.exports = server;

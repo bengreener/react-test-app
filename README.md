@@ -1,5 +1,9 @@
 # React Test App
 
+Various example mocks using React, Jest and, Testing Library to mock a Javascript module or class.
+
+Examples of local mocks, defined in the test file, manual mocks uisng the \_\_mocks\_\_ subdirectory, and using `jest.spyOn()` to spy on and override a module function, class getter, or class method.  
+
 Requires Jest resetMocks = false.
 
 If Jest [resetMocks](https://jestjs.io/docs/mock-function-api#mockfnmockreset) = true tests that rely on the value returned by a mock function will fail.

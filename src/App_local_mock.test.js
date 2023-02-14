@@ -6,7 +6,7 @@ import App from './App';
 // mock module
 jest.mock('./model/server', () => {
   return {
-    getData: function () {return 'Module text'}
+    getText: function () {return 'local mock server getText()'}
   };
 })
 
@@ -14,9 +14,9 @@ jest.mock('./model/server', () => {
 jest.mock('./model/server-class', () => {
   return jest.fn().mockImplementation(() => {
     return {
-      'text': `Get mock server class text`,
-      // getText: function() {return `Mock server class operation text`}
-      getText: jest.fn(() => `Mock server class operation text`)
+      'text': `local mock ServerClass.text`,
+      // getText: function() {return `local mock ServerClass.getText()`}
+      getText: jest.fn(() => `local mock ServerClass.getText()`)
     };
   })
 });
@@ -27,20 +27,20 @@ it('renders', () => {
   expect(appDivElement).toBeInTheDocument();
 });
 
-it('displays text from module server', () => {
+it('displays text from server module', () => {
   render(<App />);
-  const pElement = screen.getByText(/Module text/i);
+  const pElement = screen.getByText(/local mock server getText()/);
   expect(pElement).toBeInTheDocument();
 });
 
-it('displays text from server class', () => {
+it('displays text property from ServerClass', () => {
   render(<App />);
-  const pElement = screen.getByText(/Get mock server class text/i);
+  const pElement = screen.getByText(/local mock ServerClass.text/);
   expect(pElement).toBeInTheDocument();
 })
 
-it('displays operation text from server class', () => {
+it('displays ServerClass.getText() method return value', () => {
   render(<App />);
-  const pElement = screen.getByText(/Mock server class operation text/i);
+  const pElement = screen.getByText(/local mock ServerClass.getText()/);
   expect(pElement).toBeInTheDocument();
 })

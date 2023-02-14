@@ -3,13 +3,18 @@ import App from './App';
 import server from './model/server';
 import ServerClass from './model/server-class';
 
-const getDataSpy = jest.spyOn(server, 'getData').mockImplementation(() => {return 'Module mock text'});
-const textSpy = jest.spyOn(ServerClass.prototype, 'text', 'get').mockImplementation(() => `Get mock server class text`);
-const getTextSpy = jest.spyOn(ServerClass.prototype, 'getText').mockImplementation(() => 'Mock server class operation text');
+// spy on module method
+const module_getTextSpy = jest.spyOn(server, 'getText').mockImplementation(() => {return 'spy server getText()'});
+// spy on class property
+const class_textSpy = jest.spyOn(ServerClass.prototype, 'text', 'get').mockImplementation(() => `spy ServerClass.text`);
+// spy ob class method
+const class_getTextSpy = jest.spyOn(ServerClass.prototype, 'getText').mockImplementation(() => 'spy ServerClass.getText()');
 
+// clear data from mocks before each test
 beforeEach(() => {
-  getDataSpy.mockClear();
-  textSpy.mockClear();
+  module_getTextSpy.mockClear();
+  class_textSpy.mockClear();
+  class_getTextSpy.mockClear();
 }) 
 
 it('renders', () => {
@@ -18,35 +23,35 @@ it('renders', () => {
   expect(appDivElement).toBeInTheDocument();
 });
 
-it('displays text from server', () => {
+it('displays text from server module', () => {
   render(<App />);
-  const pElement = screen.getByText(/Module mock text/i);
+  const pElement = screen.getByText(/spy server getText()/);
   expect(pElement).toBeInTheDocument();
 });
 
-it('displays text from server class', () => {
+it('displays text property from ServerClass', () => {
   render(<App />);
-  const pElement = screen.getByText(/Get mock server class text/i);
+  const pElement = screen.getByText(/spy ServerClass.text/i);
   expect(pElement).toBeInTheDocument();
 })
 
-it('displays functional text from server class', () => {
+it('displays ServerClass.getText() method return value', () => {
   render(<App />);
-  const pElement = screen.getByText(/Mock server class operation text/i);
+  const pElement = screen.getByText(/spy ServerClass.getText()/i);
   expect(pElement).toBeInTheDocument();
 })
 
-it('calls server getData', () => {
+it('calls module getText', () => {
   render(<App />);
-  expect(getDataSpy).toBeCalled();
+  expect(module_getTextSpy).toBeCalled();
 })
 
 it('calls ServerClass.text', () => {
   render(<App />);
-  expect(textSpy).toBeCalled();
+  expect(class_textSpy).toBeCalled();
 })
 
-it('calls ServerClass.getText', () => {
+it('calls class getText', () => {
   render(<App />);
-  expect(getTextSpy).toBeCalled();
+  expect(class_getTextSpy).toBeCalled();
 })

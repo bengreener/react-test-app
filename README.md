@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+# React Test App
+
+Requires Jest resetMocks = false.
+
+If Jest [resetMocks](https://jestjs.io/docs/mock-function-api#mockfnmockreset) = true tests that rely on the value returned by a mock function will fail.
+
+By default create-react-app [configures resetMocks = true](https://github.com/facebook/create-react-app/blob/main/CHANGELOG-4.x.md#jest).
+Add `"jest": {"resetMocks": false}` to package.json to override the create-react-apps configuration.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
